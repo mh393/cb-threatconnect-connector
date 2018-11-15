@@ -77,7 +77,7 @@ class ThreatConnectFeedGenerator(object):
         headers = self.generate_headers('GET', urn)
         uri = self.URL + urn
         try:
-            resp = requests.get(uri, headers=headers)
+            resp = requests.get(uri, headers=headers, verify=False)
         except requests.exceptions.SSLError:
             raise ConnectionException("Requests failed to establish SSL connection to %s)" % uri)
         except requests.exceptions.ConnectionError as e:
